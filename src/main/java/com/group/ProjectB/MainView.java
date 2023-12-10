@@ -20,15 +20,16 @@ public class MainView extends VerticalLayout {
     Div chatLog;
     HorizontalLayout items;
     Player plr;
+
+    MessageService msg;
     private final Sinks.Many<Message> publisher;
     private final Flux<Message> messages;
     public MainView(Sinks.Many<Message> publisher, Flux<Message> messages) {
 
-        Game game = new Game();
-
+        Game game = new Game(msg);
         this.publisher = publisher;
         this.messages = messages;
-
+        msg = new MessageService(this.publisher);
         addClassName("mainView");
         setSizeFull();
         setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.START);
@@ -71,22 +72,14 @@ public class MainView extends VerticalLayout {
         //Messaging
 
         messageBox.addKeyPressListener(Key.ENTER, key -> {
-            Message msg = new Message(plr, messageBox.getValue());
-            publisher.tryEmitNext(msg);
-            messageBox.clear();
-            messageBox.focus();
+
+            Message m = new Message(plr, messageBox.getValue());
+            msg.sendMessage(m);
         });
 
 
     }
 
-    void printMessage(Message msg){
-        Paragraph newMsg = new Paragraph(msg.from.name + ": " + msg.content);
-
-        chatLog.add(newMsg);
-        newMsg.scrollIntoView();
-        System.out.println(plr.name);
-    }
     void sendMessage(String content){
 
     }
@@ -116,11 +109,13 @@ public class MainView extends VerticalLayout {
         messages.subscribe(message -> {
             getUI().ifPresent( ui -> ui.access(
                     () -> {
-                        printMessage(message);
+                        msg.printMessage(message);
                     }
             ));
 
         });
 
     }
+
+
 }
