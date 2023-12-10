@@ -14,9 +14,8 @@ public class MessageService extends Div {
     }
     public void printMessage(Message msg){
         Paragraph newMsg = new Paragraph(msg.from.name + ": " + msg.content);
-
         add(newMsg);
-        newMsg.scrollIntoView();
+        //newMsg.scrollIntoView();
     }
 
     public void sendMessage(Message msg){
@@ -26,7 +25,7 @@ public class MessageService extends Div {
     public void add(Component... components){
         super.add(components);
 
-        components[components.length-1].getElement().callJsFunction("scrollIntoView");
+        //components[components.length-1].getElement().callJsFunction("scrollIntoView");
     }
 
 }

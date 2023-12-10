@@ -6,6 +6,7 @@ import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import reactor.core.publisher.Flux;
@@ -15,6 +16,8 @@ import reactor.core.publisher.Sinks;
 
 @Route(value = "")
 @CssImport("./styles.css")
+
+@Push
 public class MainView extends VerticalLayout {
 
     Div chatLog;
@@ -52,7 +55,7 @@ public class MainView extends VerticalLayout {
         section1.setHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
         //Section 1
         msg.setWidth("100%");
-        msg.setHeight("100%");
+        msg.setHeight("40%");
         msg.addClassName("chatLog");
         section1.add(new H3("Chat"));
 //        Scroller logs = new Scroller(chatLog);
@@ -74,12 +77,10 @@ public class MainView extends VerticalLayout {
 
             Message m = new Message(plr, messageBox.getValue());
             msg.sendMessage(m);
+            messageBox.clear();
+            messageBox.focus();
         });
 
-
-    }
-
-    void sendMessage(String content){
 
     }
     Sinks.EmitFailureHandler handle = new Sinks.EmitFailureHandler() {
@@ -109,6 +110,7 @@ public class MainView extends VerticalLayout {
             getUI().ifPresent( ui -> ui.access(
                     () -> {
                         msg.printMessage(message);
+                        ui.push();
                     }
             ));
 

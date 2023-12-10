@@ -15,7 +15,7 @@ public class Game {
         exe.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                msg.sendMessage(new Message("TEST"));
+                //msg.sendMessage(new Message("TEST"));
             }
         }, 0,100, TimeUnit.MILLISECONDS);
     }
