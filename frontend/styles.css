@@ -1,0 +1,15 @@
+.mainView h1 {
+  margin: 0px;
+  vertical-padding: 16px;
+  width: 100%;
+}
+.mainView {
+  padding: 0px;
+  margin: 0px;
+}
+.chatLog{
+    border-style: solid;
+    width: 20%;
+    height: 40%;
+    overflow-y: scroll;
+}

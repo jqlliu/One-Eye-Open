@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "C:/Users/sovie/Documents/GitHub/project-b/./frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Users/sovie/Documents/GitHub/project-b/./frontend/generated/jar-resources",
+  "staticOutput": "C:/Users/sovie/Documents/GitHub/project-b/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "C:\\Users\\sovie\\Documents\\GitHub\\project-b\\target\\classes\\META-INF\\VAADIN\\config",
+  "frontendBundleOutput": "C:\\Users\\sovie\\Documents\\GitHub\\project-b\\target\\classes\\META-INF\\VAADIN\\webapp",
+  "devBundleOutput": "C:/Users/sovie/Documents/GitHub/project-b/src/main/dev-bundle/webapp",
+  "devBundleStatsOutput": "C:/Users/sovie/Documents/GitHub/project-b/src/main/dev-bundle/config",
+  "jarResourcesFolder": "C:/Users/sovie/Documents/GitHub/project-b/./frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "C:\\Users\\sovie\\Documents\\GitHub\\project-b\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}
