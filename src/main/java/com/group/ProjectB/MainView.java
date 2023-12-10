@@ -26,10 +26,10 @@ public class MainView extends VerticalLayout {
     private final Flux<Message> messages;
     public MainView(Sinks.Many<Message> publisher, Flux<Message> messages) {
 
-        Game game = new Game(msg);
         this.publisher = publisher;
         this.messages = messages;
         msg = new MessageService(this.publisher);
+        Game game = new Game(msg);
         addClassName("mainView");
         setSizeFull();
         setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.START);
@@ -51,17 +51,16 @@ public class MainView extends VerticalLayout {
         items.add(section1);
         section1.setHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
         //Section 1
-        chatLog = new Div();
-        chatLog.setWidth("100%");
-        chatLog.setHeight("100%");
-        chatLog.addClassName("chatLog");
+        msg.setWidth("100%");
+        msg.setHeight("100%");
+        msg.addClassName("chatLog");
         section1.add(new H3("Chat"));
 //        Scroller logs = new Scroller(chatLog);
 //        logs.addClassName("chatLog");
 //        logs.setWidth("100%");
 //        logs.setScrollDirection(Scroller.ScrollDirection.VERTICAL);
 //        section1.add(logs);
-        section1.add(chatLog);
+        section1.add(msg);
         TextField messageBox = new TextField();
         messageBox.setWidth("100%");
         section1.add(messageBox);

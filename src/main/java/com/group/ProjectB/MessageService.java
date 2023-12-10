@@ -1,5 +1,6 @@
 package com.group.ProjectB;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Paragraph;
 import reactor.core.publisher.Sinks;
@@ -20,6 +21,12 @@ public class MessageService extends Div {
 
     public void sendMessage(Message msg){
         publisher.tryEmitNext(msg);
+    }
+    @Override
+    public void add(Component... components){
+        super.add(components);
+
+        components[components.length-1].getElement().callJsFunction("scrollIntoView");
     }
 
 }
